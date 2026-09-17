@@ -22,4 +22,6 @@ class Player : public Entity{
 
         virtual void endOfTurn();
 
+        virtual void startOfTurn();
+
 };

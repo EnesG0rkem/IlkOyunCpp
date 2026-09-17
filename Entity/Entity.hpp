@@ -22,4 +22,8 @@ public:
     virtual void getPoisoned();
 
     int randomizer(int lowest, int highest);
+
+    void endOfTurn();
+
+    void startOfTurn();
 };
