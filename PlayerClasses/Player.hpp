@@ -1,18 +1,25 @@
 #pragma once
 #include <vector>
 #include "../Entity/Entity.hpp"
+#include "../Fight/Fight.hpp"
 #include "../Inventory/Inventory.hpp"
+#include "../Monsters/Monster.hpp"
+#include "../PlayerSupports/Shadow.hpp"
 
 class Player : public Entity{
     // Attributes
     protected:
-        int gold, monsterParts, maxEnergy, energy, weight,
+        int maxEnergy, energy,
             parchemnts, 
-            parchmentCounter, poisonedCounter;
+            parchmentCounter = 0, poisonedCounter = 0;
 
-        bool usedPoison, usedParchment;
+        bool usedPoison = false, usedParchment = false;
 
-        Inventory playerInventory;
-        // gibi kullanarak eşya ekleme gibi şeyleri daha kolay halletmek istiyorum
+        Inventory inventory;
+    
+    public:
+        void takeDamage(int damage) override;
+
+        virtual void endOfTurn();
 
 };

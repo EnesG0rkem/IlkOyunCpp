@@ -2,7 +2,11 @@
 #include "./Monster.hpp"
 
     Monster::Monster(float _powerDifference, int _baseGoldValue): 
+        Entity(), 
         powerDifference(_powerDifference), baseGoldValue(_baseGoldValue), 
-        goldValue(_powerDifference*_baseGoldValue),
-        cantGuardCounter(0), damageReducedCounter(0), exhaustedCounter(0),
-        isBurning(false), isWeakToMagic(false), isExhausted(false){};
+        goldValue(_powerDifference*_baseGoldValue){};
+
+    void Monster::takeDamage(int damage){
+            Entity::takeDamage(damage);
+            Fight::monsterAllience.lastDamagedMember = this;
+}

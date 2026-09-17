@@ -4,14 +4,22 @@
 class Entity {
 protected:
     std::string fullName;
-    int maxHealth, maxMana, health, mana, attackPower, abilityPower, poisonedCounter;
-    float guardReduction = 0.6;
-    bool isGuarding, isPoisoned;
+    int maxHealth, maxMana, health, mana, 
+        attackPower, abilityPower, weight,
+        poisonedCounter = 0;
+    float guardDamageMultipier = 0.6;
 
 public:
-    void dealDamage(int damage, Entity* entity);
+    bool isGuarding = false, isPoisoned = false;
 
-    void raiseGuard();
+public:
+    virtual void takeDamage(int damage);
+
+    virtual void raiseGuard();
     
-    std::string getFullName();
+    virtual std::string getFullName();
+
+    virtual void getPoisoned();
+
+    int randomizer(int lowest, int highest);
 };
