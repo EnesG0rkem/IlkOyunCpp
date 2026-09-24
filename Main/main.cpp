@@ -1,13 +1,14 @@
-#include "../Entity/Entity.cpp"
-#include "../Monsters/Monster.cpp"
-#include "../PlayerClasses/Ninja.cpp"
-
+#include "Entity/Entity.hpp"
+#include "Monsters/Monster.hpp"
+#include "PlayerClasses/Ninja.hpp"
+#include "PlayerClasses/Player.hpp"
+#include "PlayerSupports/Shadow.hpp"
 
 int main(){
-
     Entity e;
-    Monster m(100,10);
+    Monster m(100, 10);
     Player p;
     Ninja n("asasd");
-    Shadow s();
+    Shadow s;
+    return 0;
 }

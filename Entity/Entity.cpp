@@ -1,8 +1,9 @@
 #include "Entity.hpp"
 
-void Entity::takeDamage(int damage){
+bool Entity::takeDamage(int damage){
     if(isGuarding) damage *= guardDamageMultipier;
     health -= damage;
+    return health < 0;
 }
 
 void Entity::raiseGuard() { isGuarding = true; }
@@ -19,3 +20,8 @@ int Entity::randomizer(int lowest, int highest){
     int interval = highest - lowest;
     return rand() % interval + lowest;
 }
+
+void Entity::endOfTurn(){}
+
+void Entity::startOfTurn(){}
+

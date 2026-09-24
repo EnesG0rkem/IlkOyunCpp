@@ -1,6 +1,7 @@
 #include <map>
 #include "./Ninja.hpp"
-
+#include "PlayerSupports/Shadow.hpp"
+#include "Fight/Fight.hpp"
 
 Ninja::Ninja(std::string _fullName){
     fullName = _fullName;
@@ -12,16 +13,21 @@ Ninja::Ninja(std::string _fullName){
     energy = maxEnergy;
     attackPower = 30;
     weight = baseWeight;
-    inventory.addItem("Ninja yıldızı", 5);
-    inventory.addItem("Kunai", 30);
+    inventory.addItem(NINJA_STAR, 5);
+    inventory.addItem(KUNAI, 30);
 
 }
 
 void Ninja::endOfTurn(){
     Player::endOfTurn();
     if(invisibilityCounter > 0) invisibilityCounter--;
-
+    if(turnCounter++ > 1){
+     startOfTurn();
+     turnCounter = 0;   
+    }
 }
+
+void Ninja::startOfTurn(){}
 
 void Ninja::intoShadows(){
     mana -= 50;
@@ -43,19 +49,24 @@ void Ninja::ninjaStar(Monster* target){
         becomeVisible();
     }
 
+    inventory.useItem(NINJA_STAR);
     ninjaStarMap[target]++;
 
-    target->takeDamage(damage + randomizer(-damage/10, damage/10));
-    
+    if(target->takeDamage(damage + randomizer(-damage/10, damage/10))){
+        int regainPercentage = randomizer(0, 80);
+        int amount = ninjaStarMap[target];
+        inventory.addItem(NINJA_STAR, amount*regainPercentage);
+    }
 }
 
 void Ninja::kunaiStorm(){
     int kunaiAmount = 0;
 
-    int amount = std::min(energy-50, inventory.getItemNumber("Kunai")-10); 
+    int amount = std::min(energy-50, inventory.getItemNumber(KUNAI)-10); 
     energy -= amount*5;
     int damage = amount * attackPower / 10;
     damage += randomizer(-damage/5, damage/5);
+    inventory.useItem(KUNAI, amount);
 
     bool invisible = false;
     if(invisibilityCounter > 0){
@@ -91,4 +102,9 @@ void Ninja::deathDagger(Monster* target){
 void Ninja::becomeVisible(){
     invisibilityCounter = 0;
     weight = baseWeight;
+}
+
+bool Ninja::flee(){
+    int luck = randomizer(0, 100);
+    return luck < 60;
 }

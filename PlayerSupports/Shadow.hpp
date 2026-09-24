@@ -1,13 +1,13 @@
 #pragma once
-#include "../PlayerClasses/Player.hpp"
+#include "PlayerClasses/Player.hpp"
 
 class Shadow : public Player{
-    int roundCounter;
+    public:
+        Shadow();
+        
+        int roundCounter;
 
-    void takeDamage(int damage) override;
+        void endOfTurn() override;
 
-    void endOfTurn() override;
-
-    void startOfTurn() override;
-
+        void startOfTurn() override;
 };

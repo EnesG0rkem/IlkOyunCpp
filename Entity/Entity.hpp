@@ -13,7 +13,7 @@ public:
     bool isGuarding = false, isPoisoned = false;
 
 public:
-    virtual void takeDamage(int damage);
+    virtual bool takeDamage(int damage);
 
     virtual void raiseGuard();
     
@@ -23,7 +23,7 @@ public:
 
     int randomizer(int lowest, int highest);
 
-    void endOfTurn();
+    virtual void endOfTurn();
 
-    void startOfTurn();
+    virtual void startOfTurn();
 };

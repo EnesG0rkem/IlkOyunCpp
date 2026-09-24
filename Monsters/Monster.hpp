@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../Entity/Entity.hpp"
+#include "Entity/Entity.hpp"
 
 class Monster : public Entity{
 
@@ -18,5 +18,5 @@ class Monster : public Entity{
         int cantGuardCounter = 0, damageReducedCounter = 0, exhaustedCounter = 0;
         bool isBurning = false, isWeakToMagic = false, isExhausted = false;
         Monster(float _powerDifference, int _baseGoldValue);
-        void takeDamage(int damage) override;
+        bool takeDamage(int damage) override;
 };

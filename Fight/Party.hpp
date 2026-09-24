@@ -1,6 +1,6 @@
-#pragma once
+#pragma once   
 #include <vector>
-#include "../Entity/Entity.hpp"
+#include "Entity/Entity.hpp"
 template <typename T>
 
 class Party{
@@ -8,5 +8,7 @@ class Party{
         std::vector<T*> members;
         T* lastDamagedMember = nullptr;
 
-        bool isLastDamagedMemeber(T* member);
+        bool isLastDamagedMemeber(Entity* member){
+            return member == lastDamagedMember;
+        }
 };

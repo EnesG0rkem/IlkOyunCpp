@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
-#include "../Entity/Entity.hpp"
 #include "./Party.hpp"
+#include "PlayerClasses/Player.hpp"
+#include "Monsters/Monster.hpp"
 
 class Fight{
     public:
