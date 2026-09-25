@@ -23,5 +23,7 @@ int Entity::randomizer(int lowest, int highest){
 
 void Entity::endOfTurn(){}
 
-void Entity::startOfTurn(){}
+void Entity::startOfTurn(){
+    isGuarding = false;
+}
 

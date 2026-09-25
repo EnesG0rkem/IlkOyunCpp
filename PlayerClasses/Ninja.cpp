@@ -22,12 +22,14 @@ void Ninja::endOfTurn(){
     Player::endOfTurn();
     if(invisibilityCounter > 0) invisibilityCounter--;
     if(turnCounter++ > 1){
-     startOfTurn();
-     turnCounter = 0;   
+        Ninja::secondTurn();
+        turnCounter = 0;   
     }
 }
 
 void Ninja::startOfTurn(){}
+
+void Ninja::secondTurn(){}
 
 void Ninja::intoShadows(){
     mana -= 50;

@@ -26,5 +26,5 @@ bool Player::flee(){
 
 void Player::endOfTurn(){}
 
-void Player::startOfTurn(){}
+void Player::startOfTurn(){ Player::startOfTurn(); }
 

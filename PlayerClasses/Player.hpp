@@ -22,7 +22,7 @@ class Player : public Entity{
                     PARCHEMNT = "Parşömen", POISON = "Zehir";
     
     public:
-        bool takeDamage(int damage) override;
+        virtual bool takeDamage(int damage) override;
 
         virtual void endOfTurn() override;
 

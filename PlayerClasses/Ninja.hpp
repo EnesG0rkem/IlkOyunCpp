@@ -18,6 +18,8 @@ class Ninja : public Player{
         void startOfTurn() override;
 
         void endOfTurn() override;
+
+        void secondTurn();
         
         void intoShadows();
 

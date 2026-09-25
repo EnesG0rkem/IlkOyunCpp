@@ -11,6 +11,7 @@ add_executable(IlkOyunCpp
     Monsters/Monster.cpp
     PlayerClasses/Player.cpp
     PlayerClasses/Ninja.cpp
+    PlayerClasses/Knight.cpp
     PlayerSupports/Shadow.cpp
     Fight/Fight.cpp
     Inventory/Inventory.cpp
