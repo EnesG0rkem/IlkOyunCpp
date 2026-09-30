@@ -3,15 +3,8 @@
 #include "PlayerSupports/Shadow.hpp"
 #include "Fight/Fight.hpp"
 
-Ninja::Ninja(std::string _fullName){
-    fullName = _fullName;
-    maxHealth = 250;
-    health = maxHealth;
-    maxMana = 275;
-    mana = maxMana;
-    maxEnergy = 200;
-    energy = maxEnergy;
-    attackPower = 30;
+Ninja::Ninja(std::string _fullName)
+    :Player(_fullName, 250, 275, 200) {
     weight = baseWeight;
     inventory.addItem(NINJA_STAR, 5);
     inventory.addItem(KUNAI, 30);

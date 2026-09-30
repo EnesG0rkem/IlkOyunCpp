@@ -10,10 +10,11 @@ protected:
     float guardDamageMultipier = 0.6;
 
 public:
+    int burningCounter = 0, burnDamage = 0;
     bool isGuarding = false, isPoisoned = false;
 
 public:
-    virtual bool takeDamage(int damage);
+    virtual bool takeDamage(int burnDamage);
 
     virtual void raiseGuard();
     
@@ -26,4 +27,10 @@ public:
     virtual void endOfTurn();
 
     virtual void startOfTurn();
+
+    virtual void heal(int amount);
+
+    virtual void setOnFire(int fireDamage);
+
+    int getHealth();
 };

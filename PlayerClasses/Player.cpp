@@ -1,6 +1,16 @@
 #include "./Player.hpp"
 #include "Fight/Fight.hpp"
 
+Player::Player(std::string _fullName, int _maxHealth, int _maxMana, int _maxEnergy){
+    fullName = _fullName;
+    maxHealth = _maxHealth;
+    health = maxHealth;
+    maxMana = _maxMana;
+    mana = maxMana;
+    maxEnergy = _maxEnergy;
+    energy = maxEnergy;
+}
+
 bool Player::takeDamage(int damage){
             Entity::takeDamage(damage);
             Fight::playerAllience.lastDamagedMember = this;

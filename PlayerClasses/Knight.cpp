@@ -1,14 +1,8 @@
 #include "./Knight.hpp"
 #include "Fight/Fight.hpp"
 
-Knight::Knight(std::string _fullName){
-    fullName = _fullName;
-    maxHealth = 400;
-    health = maxHealth;
-    maxMana = 200;
-    mana = maxMana;
-    maxEnergy = 400;
-    energy = maxEnergy;
+Knight::Knight(std::string _fullName)
+    :Player(_fullName, 400, 200, 400) {
     attackPower = 30;
     weight = 40;
     guardDamageMultipier = 0.3;

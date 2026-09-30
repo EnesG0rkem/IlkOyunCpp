@@ -21,9 +21,25 @@ int Entity::randomizer(int lowest, int highest){
     return rand() % interval + lowest;
 }
 
-void Entity::endOfTurn(){}
+void Entity::endOfTurn(){
+    if(burningCounter > 0){
+        takeDamage(burnDamage);
+        burningCounter--;
+        if(burningCounter == 1) burnDamage = 0;
+    }
+}
 
 void Entity::startOfTurn(){
     isGuarding = false;
 }
 
+void Entity::heal(int amount){
+    health = (health + amount) > maxHealth ? maxHealth : health + amount; 
+}
+
+void Entity::setOnFire(int _burnDamage){
+    burningCounter = 3;
+    burnDamage = _burnDamage;
+}
+
+int Entity::getHealth(){ return health; }
