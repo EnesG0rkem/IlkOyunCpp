@@ -7,7 +7,6 @@
 int main(){
     Entity e;
     Monster m(100, 10);
-    Player p;
     Ninja n("asasd");
     Shadow s;
     return 0;

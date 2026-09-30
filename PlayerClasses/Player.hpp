@@ -22,6 +22,9 @@ class Player : public Entity{
                     PARCHEMNT = "Parşömen", POISON = "Zehir";
     
         Player(std::string _fullName, int _maxHealth, int _maxMana, int _maxEnergy);
+
+        Player();
+
     public:
         virtual bool takeDamage(int damage) override;
 

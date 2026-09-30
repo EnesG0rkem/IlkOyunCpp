@@ -11,6 +11,8 @@ Player::Player(std::string _fullName, int _maxHealth, int _maxMana, int _maxEner
     energy = maxEnergy;
 }
 
+Player::Player(){}
+
 bool Player::takeDamage(int damage){
             Entity::takeDamage(damage);
             Fight::playerAllience.lastDamagedMember = this;
