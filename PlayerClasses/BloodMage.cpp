@@ -7,7 +7,7 @@ BloodMage::BloodMage(std::string _fullName)
     attackPower = 20;
     abilityPower = 15;
     inventory.addItem(POISON, 5);
-    inventory.addItem(HEAL_POTION, 10);
+    inventory.addItem(HEALTH_POTION, 10);
 }
 
 void BloodMage::startOfTurn(){}
@@ -35,7 +35,7 @@ void BloodMage::mandatoryDonation(Monster* target){
     target->takeDamage(damage);
     
     int healAmount = abilityPower*multiplier;
-    healAmount = randomizer(-healAmount/10, healAmount/10);
+    healAmount += randomizer(-healAmount/10, healAmount/10);
     heal(healAmount);
 }
 
@@ -71,7 +71,7 @@ void BloodMage::bloodArrows(){
 void BloodMage::bloodDagger(Monster* target){
     energy -= 25;
     int damage = attackPower;
-    damage = randomizer(-damage/10, damage/10);
+    damage += randomizer(-damage/10, damage/10);
     target->takeDamage(damage);
     weaponCounter--;
 }
