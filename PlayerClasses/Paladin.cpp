@@ -27,7 +27,7 @@ void Paladin::noviceFireball(Monster* target){
     target -> takeDamage(damage);
 
     int burnDamage = attackPower*3/5;
-    if(target -> burnDamage < burnDamage &&
+    if(target -> getBurnDamage() < burnDamage &&
         randomizer(0,100) < 30) target->setOnFire(burnDamage);
 
 }
@@ -45,7 +45,7 @@ void Paladin::noviceLightning(Monster* target){
             check = true;
         }
     }
-    if(check) Fight::monsterAllience.lastDamagedMember = nullptr;
+    if(check) Fight::monsterAllience.lastDamagedMember = target;
 
 }
 

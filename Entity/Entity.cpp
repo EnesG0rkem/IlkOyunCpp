@@ -1,19 +1,17 @@
 #include "Entity.hpp"
 
-bool Entity::takeDamage(int damage){
-    if(isGuarding) damage *= guardDamageMultipier;
-    health -= damage;
-    return health < 0;
+bool Entity::takeDamage(int damage){ return false; }
+
+int Entity::calculateDamage(int damage){
+    if(guarding) damage *= guardDamageMultipier;
+    return damage;
 }
 
-void Entity::raiseGuard() { isGuarding = true; }
+void Entity::raiseGuard() { guarding = true; }
+
+bool Entity::isGuarding() { return guarding; }
 
 std::string Entity::getFullName() { return fullName; }
-
-void Entity::getPoisoned(){
-    isPoisoned = true;
-    poisonedCounter = 3;
-}
 
 int Entity::randomizer(int lowest, int highest){
     srand(time(0));
@@ -30,7 +28,7 @@ void Entity::endOfTurn(){
 }
 
 void Entity::startOfTurn(){
-    isGuarding = false;
+    guarding = false;
 }
 
 void Entity::heal(int amount){
@@ -38,8 +36,20 @@ void Entity::heal(int amount){
 }
 
 void Entity::setOnFire(int _burnDamage){
-    burningCounter = 3;
+    burningCounter += 3;
     burnDamage = _burnDamage;
 }
 
+bool Entity::isOnFire(){ return burningCounter > 0; }
+
+int Entity::getBurnDamage(){ return burnDamage; }
+
 int Entity::getHealth(){ return health; }
+
+void Entity::becomePoisoned(){
+    isPoisonedCounter += 3;
+}
+
+bool Entity::isPoisoned(){ return isPoisonedCounter > 3; }
+
+void Entity::lowerGuard(){ guarding = false; }

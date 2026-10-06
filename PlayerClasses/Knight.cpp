@@ -30,7 +30,7 @@ void Knight::dontFall(){
 
 void Knight::cuttingImpact(Monster* target){
     int energyCost = 30;
-    if(isGuarding) energyCost *= 2;
+    if(guarding) energyCost *= 2;
     energy -= energyCost;
     int damage = attackPower + randomizer(-damage/10, damage/10);
     if(target->takeDamage(damage) && dontFallCounter > 0){
@@ -41,7 +41,7 @@ void Knight::cuttingImpact(Monster* target){
 
 void Knight::wideSwing(){
     int energyCost = 45;
-    if(isGuarding) energyCost *= 2;
+    if(guarding) energyCost *= 2;
     energy -= energyCost;
     int damage = attackPower + randomizer(-damage/10, damage/10);
     for(Monster* target : Fight::monsterAllience.members){

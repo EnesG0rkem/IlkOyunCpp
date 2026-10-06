@@ -14,8 +14,10 @@ Player::Player(std::string _fullName, int _maxHealth, int _maxMana, int _maxEner
 Player::Player(){}
 
 bool Player::takeDamage(int damage){
-            Entity::takeDamage(damage);
+            damage = Entity::calculateDamage(damage);
+            health -= damage;
             Fight::playerAllience.lastDamagedMember = this;
+            Fight::playerAllience.totalDamageTaken += damage;
             if(health < 1) removeFromMembers();
             return health < 1;
 }

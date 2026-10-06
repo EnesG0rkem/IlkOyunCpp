@@ -8,6 +8,20 @@
         goldValue(_powerDifference*_baseGoldValue){};
 
     bool Monster::takeDamage(int damage){
+        damage = Entity::calculateDamage(damage);
+        health -= damage;
+        Fight::monsterAllience.totalDamageTaken += damage;
         Fight::monsterAllience.lastDamagedMember = this;
-        return Entity::takeDamage(damage);
-}
+        if(health < 1) removeFromMembers();
+        return health < 1;
+    }
+
+    void Monster::removeFromMembers(){}
+
+    void Monster::raiseGuard(){ Entity::raiseGuard(); }
+
+    void Monster::endOfTurn(){}
+
+    void Monster::startOfTurn(){}
+
+    

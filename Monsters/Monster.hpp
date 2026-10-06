@@ -17,6 +17,16 @@ class Monster : public Entity{
     public:
         int cantGuardCounter = 0, damageReducedCounter = 0, exhaustedCounter = 0;
         bool isWeakToMagic = false, isExhausted = false;
+        
         Monster(float _powerDifference, int _baseGoldValue);
+
         bool takeDamage(int damage) override;
+
+        void removeFromMembers();
+
+        void raiseGuard() override;
+
+        void endOfTurn()override;
+
+        void startOfTurn()override;
 };

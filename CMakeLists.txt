@@ -12,6 +12,8 @@ add_executable(IlkOyunCpp
     PlayerClasses/Player.cpp
     PlayerClasses/Ninja.cpp
     PlayerClasses/Knight.cpp
+    PlayerClasses/Paladin.cpp
+    PlayerClasses/BloodMage.cpp
     PlayerSupports/Shadow.cpp
     Fight/Fight.cpp
     Inventory/Inventory.cpp

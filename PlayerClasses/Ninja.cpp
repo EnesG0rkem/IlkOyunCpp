@@ -6,6 +6,7 @@
 Ninja::Ninja(std::string _fullName)
     :Player(_fullName, 250, 275, 200) {
     weight = baseWeight;
+    attackPower = 30;
     inventory.addItem(NINJA_STAR, 5);
     inventory.addItem(KUNAI, 30);
 
@@ -40,7 +41,7 @@ void Ninja::ninjaStar(Monster* target){
     energy -= 25;
     int damage = 2 * attackPower / 3;
     if(invisibilityCounter != 0){
-        target->isPoisoned = true;
+        target->becomePoisoned();
         becomeVisible();
     }
 
@@ -71,7 +72,7 @@ void Ninja::kunaiStorm(){
 
     for(Monster* monster : Fight::monsterAllience.members){
         if(invisible){
-            monster->isGuarding = false;
+            monster->lowerGuard();
             monster->cantGuardCounter = 3;
         }
         monster -> takeDamage(damage);

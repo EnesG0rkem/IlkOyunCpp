@@ -7,10 +7,7 @@ class Player : public Entity{
     // Attributes
     protected:
         int maxEnergy, energy, level = 1, xp = 0,
-            parchemnts, poisons,
-            parchmentCounter = 0, poisonedCounter = 0;
-
-        bool usedPoison = false, usedParchment = false;
+            parchmentCounter = 0, usedPosionCounter = 0;
 
         Inventory inventory;
 
@@ -26,7 +23,7 @@ class Player : public Entity{
         Player();
 
     public:
-        virtual bool takeDamage(int damage) override;
+        bool takeDamage(int damage) override;
 
         virtual void endOfTurn() override;
 

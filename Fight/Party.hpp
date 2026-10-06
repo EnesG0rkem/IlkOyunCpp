@@ -11,4 +11,6 @@ class Party{
         bool isLastDamagedMemeber(Entity* member){
             return member == lastDamagedMember;
         }
+
+        int totalDamageTaken;
 };

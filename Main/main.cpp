@@ -5,7 +5,6 @@
 #include "PlayerSupports/Shadow.hpp"
 
 int main(){
-    Entity e;
     Monster m(100, 10);
     Ninja n("asasd");
     Shadow s;

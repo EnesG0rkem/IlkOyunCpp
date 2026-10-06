@@ -6,31 +6,43 @@ protected:
     std::string fullName;
     int maxHealth, maxMana, health, mana, 
         attackPower, abilityPower, weight,
-        poisonedCounter = 0;
+        isPoisonedCounter = 0,
+        burningCounter = 0, burnDamage = 0;
     float guardDamageMultipier = 0.6;
 
-public:
-    int burningCounter = 0, burnDamage = 0;
-    bool isGuarding = false, isPoisoned = false;
-
-public:
-    virtual bool takeDamage(int burnDamage);
+    bool guarding = false;
 
     virtual void raiseGuard();
-    
-    virtual std::string getFullName();
 
-    virtual void getPoisoned();
+    bool isGuarding();
 
     int randomizer(int lowest, int highest);
 
     virtual void endOfTurn();
-
+    
     virtual void startOfTurn();
+    
+public:
 
-    virtual void heal(int amount);
+    virtual bool takeDamage(int damage);
 
-    virtual void setOnFire(int fireDamage);
+    int calculateDamage(int damage);
+    
+    std::string getFullName();
+    
+    void heal(int amount);
+    
+    void setOnFire(int fireDamage);
+    
+    bool isOnFire();
 
+    int getBurnDamage();
+    
     int getHealth();
+    
+    void becomePoisoned();
+
+    bool isPoisoned();
+
+    void lowerGuard();
 };
