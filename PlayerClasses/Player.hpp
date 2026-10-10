@@ -14,7 +14,7 @@ class Player : public Entity{
         void removeFromMembers();
 
         std::string GOLD = "Altın", MONSTER_PARTS = "Canavar Parçası",
-                    HEAL_POTION = "Can İksiri", MANA_POTION = "Mana İksiri",
+                    HEALTH_POTION = "Can İksiri", MANA_POTION = "Mana İksiri",
                     ENERGY_POTION = "Enerji İksiri", 
                     PARCHEMNT = "Parşömen", POISON = "Zehir";
     

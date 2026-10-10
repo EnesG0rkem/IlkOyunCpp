@@ -7,7 +7,7 @@ Knight::Knight(std::string _fullName)
     weight = 40;
     guardDamageMultipier = 0.3;
 
-    inventory.addItem(HEAL_POTION, 5);
+    inventory.addItem(HEALTH_POTION, 5);
     inventory.addItem(ENERGY_POTION, 5);
 }
 

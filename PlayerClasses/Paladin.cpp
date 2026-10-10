@@ -6,7 +6,7 @@ Paladin::Paladin(std::string _fullName)
     abilityPower = 25;
     weight = 25;
 
-    inventory.addItem(HEAL_POTION, 3);
+    inventory.addItem(HEALTH_POTION, 3);
     inventory.addItem(PARCHEMNT, 10);
 }
 
@@ -23,12 +23,17 @@ void Paladin::noviceFireball(Monster* target){
     int damage = abilityPower + randomizer(-abilityPower/10, abilityPower/10);
     if(target->isWeakToMagic){
         damage *= 1.5;
+        target->isWeakToMagic = false;
     }
     target -> takeDamage(damage);
 
     int burnDamage = attackPower*3/5;
-    if(target -> getBurnDamage() < burnDamage &&
-        randomizer(0,100) < 30) target->setOnFire(burnDamage);
+
+    if(randomizer(0,100) < 30){
+        if(target -> getBurnDamage() > burnDamage)
+            burnDamage = target->getBurnDamage();
+        target->setOnFire(burnDamage);
+    }
 
 }
 
@@ -36,12 +41,21 @@ void Paladin::noviceLightning(Monster* target){
     mana -= 40;
     int damage = abilityPower*4/5;
     damage += randomizer(-damage/25, damage/25);
+    if(target->isWeakToMagic){
+        damage *= 1.5;
+        target->isWeakToMagic = false;
+    }
     target->takeDamage(damage);
 
     bool check = false;
     for(Monster* sideTarget : Fight::monsterAllience.members){
         if(randomizer(0,100) > 30){
-            sideTarget->takeDamage(damage*2/3);
+            float bonusDamage = 1;
+            if(sideTarget->isWeakToMagic){
+                bonusDamage *= 1.5;
+                sideTarget->isWeakToMagic = false;
+            }
+            sideTarget->takeDamage(damage*2/3*bonusDamage);
             check = true;
         }
     }
