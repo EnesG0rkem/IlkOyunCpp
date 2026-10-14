@@ -19,6 +19,10 @@ add_executable(IlkOyunCpp
     Fight/Fight.cpp
     Inventory/Inventory.cpp
     Inventory/Item.cpp
+    PlayerSupports/Summon.cpp
+    PlayerSupports/StoneSummon.cpp
+    PlayerSupports/WindSummon.cpp
+    PlayerSupports/IceSummon.cpp
 )
 
 target_include_directories(IlkOyunCpp PRIVATE
