@@ -10,6 +10,10 @@ Mage::Mage(std::string _fullName)
         inventory.addItem(MANA_POTION, 4);
     }
 
+void Mage::startOfTurn(){}
+
+void Mage::endOfTurn(){}
+
 void Mage::focus(){
     mana -= 10;
     focusCounter++;
@@ -73,7 +77,7 @@ void Mage::masterLightning(Monster* target){
 }
 
 void Mage::conjureAlly(){
-    
+
 }
 
 void Mage::needleslyBigRod(Monster* target){
